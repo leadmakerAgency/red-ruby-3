@@ -21,6 +21,7 @@ collections:
       - { label: "Slug", name: "slug", widget: "string", hint: "URL-friendly slug, e.g. airbnb-cleaning-cambridge" }
       - { label: "Publish Date", name: "date", widget: "datetime", time_format: "HH:mm", format: "YYYY-MM-DDTHH:mm:ssZ" }
       - { label: "Excerpt", name: "excerpt", widget: "text", hint: "Short summary shown on the blog list and in SEO." }
+      - { label: "Featured Image", name: "featured_image", widget: "image", required: false, hint: "Optional thumbnail image shown on the blog list." }
       - { label: "Hero Emoji", name: "hero_emoji", widget: "string", required: false, hint: "Optional emoji used in the blog card thumbnail." }
       - { label: "Tags", name: "tags", widget: "list", required: false }
       - { label: "Body", name: "body", widget: "markdown" }
