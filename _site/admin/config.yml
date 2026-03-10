@@ -1,7 +1,7 @@
 backend:
   name: github
   # TODO: replace with your actual GitHub repo, e.g. "your-username/red-ruby"
-  repo: your-username/red-ruby
+  repo: leadmakerAgency/red-ruby-3
 
 media_folder: "content/media"
 public_folder: "/media"
