@@ -18,7 +18,13 @@ collections:
       - { label: "Layout", name: "layout", widget: "hidden", default: "blog-post.njk" }
       - { label: "Permalink", name: "permalink", widget: "hidden", default: "/blog/{{slug}}/" }
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Slug", name: "slug", widget: "string", hint: "URL-friendly slug, e.g. airbnb-cleaning-cambridge" }
+      - label: "Slug"
+        name: "slug"
+        widget: "string"
+        hint: "URL-friendly slug, e.g. airbnb-cleaning-cambridge"
+        pattern:
+          - "^[a-z0-9-]+$"
+          - "Use only lowercase letters, numbers, and dashes."
       - { label: "Publish Date", name: "date", widget: "datetime", time_format: "HH:mm", format: "YYYY-MM-DDTHH:mm:ssZ" }
       - { label: "Excerpt", name: "excerpt", widget: "text", hint: "Short summary shown on the blog list and in SEO." }
       - { label: "Featured Image", name: "featured_image", widget: "image", required: false, hint: "Optional thumbnail image shown on the blog list." }
