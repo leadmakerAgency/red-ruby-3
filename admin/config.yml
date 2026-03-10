@@ -15,6 +15,8 @@ collections:
     format: frontmatter
     slug: "{{slug}}"
     fields:
+      - { label: "Layout", name: "layout", widget: "hidden", default: "blog-post.njk" }
+      - { label: "Permalink", name: "permalink", widget: "hidden", default: "/blog/{{slug}}/" }
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Slug", name: "slug", widget: "string", hint: "URL-friendly slug, e.g. airbnb-cleaning-cambridge" }
       - { label: "Publish Date", name: "date", widget: "datetime", time_format: "HH:mm", format: "YYYY-MM-DDTHH:mm:ssZ" }
@@ -22,4 +24,5 @@ collections:
       - { label: "Hero Emoji", name: "hero_emoji", widget: "string", required: false, hint: "Optional emoji used in the blog card thumbnail." }
       - { label: "Tags", name: "tags", widget: "list", required: false }
       - { label: "Body", name: "body", widget: "markdown" }
+
 
