@@ -1,0 +1,14 @@
+[build]
+  command = "npm run build"
+  publish = "_site"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+
+# Netlify Forms notification — sends submissions to email
+# Configure in Netlify dashboard: Site settings > Forms > Form notifications
+# Add email notification to: mark.j.blackwell@gmail.com
