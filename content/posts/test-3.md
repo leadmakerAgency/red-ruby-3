@@ -1,6 +1,6 @@
 ---
 layout: blog-post.njk
-permalink: /blog//
+permalink: /blog/test3/
 title: test 3
 slug: test3
 date: 2026-03-10T17:03:00+01:00

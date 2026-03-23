@@ -15,8 +15,6 @@ collections:
     format: frontmatter
     slug: "{{slug}}"
     fields:
-      - { label: "Layout", name: "layout", widget: "hidden", default: "blog-post.njk" }
-      - { label: "Permalink", name: "permalink", widget: "hidden", default: "/blog/{{slug}}/" }
       - { label: "Title", name: "title", widget: "string" }
       - label: "Slug"
         name: "slug"
