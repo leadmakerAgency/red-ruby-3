@@ -771,6 +771,60 @@ nav ul li > a.active {
 .blog-card h3 { margin-bottom: 10px; font-size: 1.3rem; }
 .blog-card p { color: var(--grey); font-size: 0.9rem; margin-bottom: 15px; }
 
+.pagination-nav {
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.pagination-pages {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.pagination-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 42px;
+  height: 42px;
+  padding: 0 14px;
+  border: 1px solid var(--grey-dark);
+  color: var(--white);
+  background: var(--black-card);
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.08em;
+  transition: all 0.25s ease;
+}
+
+.pagination-link:hover {
+  border-color: var(--ruby-red);
+  color: var(--white);
+  transform: translateY(-1px);
+}
+
+.pagination-active {
+  background: var(--ruby-red);
+  border-color: var(--ruby-red);
+}
+
+.pagination-disabled {
+  color: var(--grey);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.pagination-prev,
+.pagination-next {
+  min-width: 72px;
+}
+
 /* ── FOOTER ── */
 footer {
   background: var(--black-light);

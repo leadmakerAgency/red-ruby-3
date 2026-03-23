@@ -72,6 +72,20 @@
     <div class="blog-card fade-in">
       <div class="blog-thumb">
         
+        <img src="/media/generated-image (10).png" alt="TEST 10" class="blog-thumb-image">
+        
+      </div>
+      <div class="blog-card-body">
+        <div class="blog-date">March 2026</div>
+        <h3>TEST 10</h3>
+        <p>TEST TEST 222222</p>
+        <a href="/blog/test-10-10/" class="card-link">Read More →</a>
+      </div>
+    </div>
+    
+    <div class="blog-card fade-in">
+      <div class="blog-thumb">
+        
         <img src="/media/pexels-minan1398-771317.jpg" alt="test4" class="blog-thumb-image">
         
       </div>
@@ -141,6 +155,8 @@
     
   </div>
 
+  
+
   <div style="text-align:center;margin-top:50px;">
     <p style="color:var(--grey);font-style:italic;margin-bottom:20px;">
       More articles coming soon. We're too busy cleaning Cambridge to write them all at once.
@@ -201,64 +217,6 @@
     });
   }, { threshold: 0.1 });
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-</script>
-
-<script>
-  // #region agent log
-  (function () {
-    const images = Array.from(document.querySelectorAll(".blog-thumb-image"));
-    fetch("http://127.0.0.1:7457/ingest/23b8f3fa-75d6-496e-99f0-de39d0fa2967", {
-      method: "POST",
-      headers: { "Content-Type": "application/json", "X-Debug-Session-Id": "6c20ef" },
-      body: JSON.stringify({
-        sessionId: "6c20ef",
-        runId: "pre-fix",
-        hypothesisId: "H2_H4_H5",
-        location: "blog/index.njk:runtime",
-        message: "Blog image elements discovered",
-        data: {
-          count: images.length,
-          sources: images.map((image) => ({ src: image.getAttribute("src"), currentSrc: image.currentSrc || "" })),
-        },
-        timestamp: Date.now(),
-      }),
-    }).catch(() => {});
-
-    images.forEach((image) => {
-      image.addEventListener("load", () => {
-        fetch("http://127.0.0.1:7457/ingest/23b8f3fa-75d6-496e-99f0-de39d0fa2967", {
-          method: "POST",
-          headers: { "Content-Type": "application/json", "X-Debug-Session-Id": "6c20ef" },
-          body: JSON.stringify({
-            sessionId: "6c20ef",
-            runId: "pre-fix",
-            hypothesisId: "H2_H4_H5",
-            location: "blog/index.njk:runtime",
-            message: "Blog image loaded",
-            data: { src: image.getAttribute("src"), currentSrc: image.currentSrc || "", naturalWidth: image.naturalWidth },
-            timestamp: Date.now(),
-          }),
-        }).catch(() => {});
-      });
-
-      image.addEventListener("error", () => {
-        fetch("http://127.0.0.1:7457/ingest/23b8f3fa-75d6-496e-99f0-de39d0fa2967", {
-          method: "POST",
-          headers: { "Content-Type": "application/json", "X-Debug-Session-Id": "6c20ef" },
-          body: JSON.stringify({
-            sessionId: "6c20ef",
-            runId: "pre-fix",
-            hypothesisId: "H1_H3_H5",
-            location: "blog/index.njk:runtime",
-            message: "Blog image failed to load",
-            data: { src: image.getAttribute("src"), currentSrc: image.currentSrc || "" },
-            timestamp: Date.now(),
-          }),
-        }).catch(() => {});
-      });
-    });
-  })();
-  // #endregion
 </script>
 
 </body>
