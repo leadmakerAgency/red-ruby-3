@@ -153,6 +153,64 @@ eleventyExcludeFromCollections: true
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 </script>
 
+<script>
+  // #region agent log
+  (function () {
+    const images = Array.from(document.querySelectorAll(".blog-thumb-image"));
+    fetch("http://127.0.0.1:7457/ingest/23b8f3fa-75d6-496e-99f0-de39d0fa2967", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "X-Debug-Session-Id": "6c20ef" },
+      body: JSON.stringify({
+        sessionId: "6c20ef",
+        runId: "pre-fix",
+        hypothesisId: "H2_H4_H5",
+        location: "blog/index.njk:runtime",
+        message: "Blog image elements discovered",
+        data: {
+          count: images.length,
+          sources: images.map((image) => ({ src: image.getAttribute("src"), currentSrc: image.currentSrc || "" })),
+        },
+        timestamp: Date.now(),
+      }),
+    }).catch(() => {});
+
+    images.forEach((image) => {
+      image.addEventListener("load", () => {
+        fetch("http://127.0.0.1:7457/ingest/23b8f3fa-75d6-496e-99f0-de39d0fa2967", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "X-Debug-Session-Id": "6c20ef" },
+          body: JSON.stringify({
+            sessionId: "6c20ef",
+            runId: "pre-fix",
+            hypothesisId: "H2_H4_H5",
+            location: "blog/index.njk:runtime",
+            message: "Blog image loaded",
+            data: { src: image.getAttribute("src"), currentSrc: image.currentSrc || "", naturalWidth: image.naturalWidth },
+            timestamp: Date.now(),
+          }),
+        }).catch(() => {});
+      });
+
+      image.addEventListener("error", () => {
+        fetch("http://127.0.0.1:7457/ingest/23b8f3fa-75d6-496e-99f0-de39d0fa2967", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "X-Debug-Session-Id": "6c20ef" },
+          body: JSON.stringify({
+            sessionId: "6c20ef",
+            runId: "pre-fix",
+            hypothesisId: "H1_H3_H5",
+            location: "blog/index.njk:runtime",
+            message: "Blog image failed to load",
+            data: { src: image.getAttribute("src"), currentSrc: image.currentSrc || "" },
+            timestamp: Date.now(),
+          }),
+        }).catch(() => {});
+      });
+    });
+  })();
+  // #endregion
+</script>
+
 </body>
 </html>
 
