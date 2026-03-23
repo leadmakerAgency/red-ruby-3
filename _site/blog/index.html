@@ -72,6 +72,20 @@
     <div class="blog-card fade-in">
       <div class="blog-thumb">
         
+        <img src="/media/data (1).png" alt="Real Test 1" class="blog-thumb-image">
+        
+      </div>
+      <div class="blog-card-body">
+        <div class="blog-date">March 2026</div>
+        <h3>Real Test 1</h3>
+        <p>test test 3334442222</p>
+        <a href="/blog/real-test/" class="card-link">Read More →</a>
+      </div>
+    </div>
+    
+    <div class="blog-card fade-in">
+      <div class="blog-thumb">
+        
         <img src="/media/generated-image (10).png" alt="TEST 10" class="blog-thumb-image">
         
       </div>
@@ -217,6 +231,29 @@
     });
   }, { threshold: 0.1 });
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+<script>
+  // #region agent log
+  (function () {
+    const cards = Array.from(document.querySelectorAll(".blog-card"));
+    fetch("http://127.0.0.1:7457/ingest/23b8f3fa-75d6-496e-99f0-de39d0fa2967", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "X-Debug-Session-Id": "6c20ef" },
+      body: JSON.stringify({
+        sessionId: "6c20ef",
+        runId: "pre-fix",
+        hypothesisId: "H3_H4",
+        location: "blog/index.njk:runtime",
+        message: "Rendered blog cards on page",
+        data: {
+          count: cards.length,
+          titles: cards.slice(0, 25).map((card) => card.querySelector("h3")?.textContent?.trim() || ""),
+        },
+        timestamp: Date.now(),
+      }),
+    }).catch(() => {});
+  })();
+  // #endregion
 </script>
 
 </body>

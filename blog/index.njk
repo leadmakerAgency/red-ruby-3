@@ -185,6 +185,29 @@ permalink: "{% if pagination.pageNumber == 0 %}/blog/{% else %}/blog/page/{{ pag
   }, { threshold: 0.1 });
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 </script>
+<script>
+  // #region agent log
+  (function () {
+    const cards = Array.from(document.querySelectorAll(".blog-card"));
+    fetch("http://127.0.0.1:7457/ingest/23b8f3fa-75d6-496e-99f0-de39d0fa2967", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "X-Debug-Session-Id": "6c20ef" },
+      body: JSON.stringify({
+        sessionId: "6c20ef",
+        runId: "pre-fix",
+        hypothesisId: "H3_H4",
+        location: "blog/index.njk:runtime",
+        message: "Rendered blog cards on page",
+        data: {
+          count: cards.length,
+          titles: cards.slice(0, 25).map((card) => card.querySelector("h3")?.textContent?.trim() || ""),
+        },
+        timestamp: Date.now(),
+      }),
+    }).catch(() => {});
+  })();
+  // #endregion
+</script>
 
 </body>
 </html>

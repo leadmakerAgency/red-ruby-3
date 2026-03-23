@@ -19,11 +19,39 @@ module.exports = function (eleventyConfig) {
     });
   });
 
-  eleventyConfig.addCollection("posts", (collectionApi) =>
-    collectionApi
+  eleventyConfig.addCollection("posts", (collectionApi) => {
+    const posts = collectionApi
       .getFilteredByGlob("content/posts/*.md")
-      .sort((a, b) => b.date - a.date)
-  );
+      .sort((a, b) => b.date - a.date);
+
+    // #region agent log
+    fetch("http://127.0.0.1:7457/ingest/23b8f3fa-75d6-496e-99f0-de39d0fa2967", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "X-Debug-Session-Id": "6c20ef" },
+      body: JSON.stringify({
+        sessionId: "6c20ef",
+        runId: "pre-fix",
+        hypothesisId: "H2_H3_H4",
+        location: ".eleventy.js:addCollection(posts)",
+        message: "Posts resolved for blog collection",
+        data: {
+          postCount: posts.length,
+          posts: posts.slice(0, 25).map((post) => ({
+            inputPath: post.inputPath,
+            title: post.data?.title || "",
+            slug: post.data?.slug || "",
+            date: String(post.date || ""),
+            url: post.url || "",
+            featuredImage: post.data?.featured_image || "",
+          })),
+        },
+        timestamp: Date.now(),
+      }),
+    }).catch(() => {});
+    // #endregion
+
+    return posts;
+  });
 
   return {
     dir: {
