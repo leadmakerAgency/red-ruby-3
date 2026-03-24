@@ -39,14 +39,14 @@ body {
   overflow-x: hidden;
 }
 
-/* ── NOISE TEXTURE OVERLAY ── */
+/* ── NOISE TEXTURE (behind content — was z-index 9999 and sat on top of everything) ── */
 body::before {
   content: '';
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='256' height='256' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
   pointer-events: none;
-  z-index: 9999;
+  z-index: -1;
 }
 
 /* ── TYPOGRAPHY ── */
@@ -266,6 +266,48 @@ nav ul li > a.active {
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── SUCCESS / THANK-YOU PAGE (no heavy hero overlays, high contrast) ── */
+.hero--success {
+  min-height: 60vh;
+  background-image: none;
+  background: linear-gradient(180deg, rgba(196, 30, 58, 0.18) 0%, var(--black) 55%, var(--black) 100%);
+}
+
+.hero--success::before,
+.hero--success::after {
+  display: none;
+}
+
+.hero--success-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.hero--success h1 {
+  color: var(--white);
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.35);
+}
+
+.hero--success .success-lead {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  color: var(--cream);
+  font-size: clamp(1.05rem, 2.2vw, 1.4rem);
+  margin: 18px 0 32px;
+  line-height: 1.65;
+}
+
+.hero--success .btn-primary {
+  box-shadow: 0 8px 28px rgba(196, 30, 58, 0.45);
+}
+
+.hero--success .btn-primary:hover {
+  box-shadow: 0 10px 32px rgba(232, 25, 44, 0.55);
 }
 
 .hero-badges {
@@ -903,11 +945,13 @@ footer {
   </div>
 </header>
 
-<section class="hero" style="min-height:60vh;">
-  <div style="font-size:4rem;margin-bottom:20px;">✨</div>
-  <h1>Message Received!</h1>
-  <p style="font-family:'Playfair Display',serif;font-style:italic;color:var(--grey);font-size:1.2rem;margin:15px 0 30px;">Thanks for getting in touch. We'll get back to you faster than we clean a Cambridge studio flat.</p>
-  <a href="../index.html" class="btn btn-primary">Back to Home →</a>
+<section class="hero hero--success" aria-labelledby="success-heading">
+  <div class="hero--success-inner">
+    <div style="font-size:4rem;margin-bottom:16px;line-height:1;" aria-hidden="true">✨</div>
+    <h1 id="success-heading">Message Received!</h1>
+    <p class="success-lead">Thanks for getting in touch. We'll get back to you faster than we clean a Cambridge studio flat.</p>
+    <a href="../index.html" class="btn btn-primary">Back to Home →</a>
+  </div>
 </section>
 
 <footer>
