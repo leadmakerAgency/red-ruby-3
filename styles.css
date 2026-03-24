@@ -718,6 +718,11 @@ nav ul li > a.active {
   margin: 0 auto;
 }
 
+.blog-related-back {
+  text-align: center;
+  margin-top: 48px;
+}
+
 @media (max-width: 1024px) {
   .blog-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
