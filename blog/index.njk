@@ -78,21 +78,23 @@ permalink: "{% if pagination.pageNumber == 0 %}/blog/{% else %}/blog/page/{{ pag
 <section class="section">
   <div class="blog-grid">
     {% for post in pagedPosts %}
-    <div class="blog-card fade-in">
-      <div class="blog-thumb">
-        {% if post.data.featured_image %}
-        <img src="{{ post.data.featured_image }}" alt="{{ post.data.title }}" class="blog-thumb-image">
-        {% else %}
-        {{ post.data.hero_emoji or "🧼" }}
-        {% endif %}
-      </div>
-      <div class="blog-card-body">
-        <div class="blog-date">{{ post.date | postDate }}</div>
-        <h3>{{ post.data.title }}</h3>
-        <p>{{ post.data.excerpt }}</p>
-        <a href="{{ post.url }}" class="card-link">Read More →</a>
-      </div>
-    </div>
+    <article class="blog-card fade-in">
+      <a href="{{ post.url }}" class="blog-card-full-link" aria-labelledby="blog-card-title-{{ pagination.pageNumber }}-{{ loop.index }}">
+        <div class="blog-thumb">
+          {% if post.data.featured_image %}
+          <img src="{{ post.data.featured_image }}" alt="" class="blog-thumb-image">
+          {% else %}
+          <span aria-hidden="true">{{ post.data.hero_emoji or "🧼" }}</span>
+          {% endif %}
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-date">{{ post.date | postDate }}</div>
+          <h3 id="blog-card-title-{{ pagination.pageNumber }}-{{ loop.index }}">{{ post.data.title }}</h3>
+          <p>{{ post.data.excerpt }}</p>
+          <span class="card-link">Read More →</span>
+        </div>
+      </a>
+    </article>
     {% endfor %}
   </div>
 

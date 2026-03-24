@@ -60,10 +60,7 @@
 <section class="service-hero">
   <div class="blog-post-hero-content">
     <h1>{{ title }}</h1>
-    <p style="font-family:'Playfair Display',serif;font-style:italic;color:var(--grey);font-size:1.1rem;margin-top:10px;">
-      {{ excerpt | default("Practical cleaning and hosting advice from Cambridge's favourite cleaners.") }}
-    </p>
-    <p class="blog-date" style="margin-top:10px;">
+    <p class="blog-date" style="margin-top:14px;">
       {{ date | postDate }}
     </p>
   </div>
@@ -87,21 +84,23 @@
     {% set relatedCount = 0 %}
     {% for post in collections.posts %}
     {% if post.url != page.url and relatedCount < 3 %}
-    <div class="blog-card fade-in">
-      <div class="blog-thumb">
-        {% if post.data.featured_image %}
-        <img src="{{ post.data.featured_image }}" alt="{{ post.data.title }}" class="blog-thumb-image">
-        {% else %}
-        {{ post.data.hero_emoji or "🧼" }}
-        {% endif %}
-      </div>
-      <div class="blog-card-body">
-        <div class="blog-date">{{ post.date | postDate }}</div>
-        <h3>{{ post.data.title }}</h3>
-        <p>{{ post.data.excerpt }}</p>
-        <a href="{{ post.url }}" class="card-link">Read More →</a>
-      </div>
-    </div>
+    <article class="blog-card fade-in">
+      <a href="{{ post.url }}" class="blog-card-full-link" aria-labelledby="related-post-title-{{ relatedCount }}">
+        <div class="blog-thumb">
+          {% if post.data.featured_image %}
+          <img src="{{ post.data.featured_image }}" alt="" class="blog-thumb-image">
+          {% else %}
+          <span aria-hidden="true">{{ post.data.hero_emoji or "🧼" }}</span>
+          {% endif %}
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-date">{{ post.date | postDate }}</div>
+          <h3 id="related-post-title-{{ relatedCount }}">{{ post.data.title }}</h3>
+          <p>{{ post.data.excerpt }}</p>
+          <span class="card-link">Read More →</span>
+        </div>
+      </a>
+    </article>
     {% set relatedCount = relatedCount + 1 %}
     {% endif %}
     {% endfor %}
