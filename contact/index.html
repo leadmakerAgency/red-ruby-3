@@ -702,6 +702,17 @@ nav ul li > a.active {
 
 .form-group textarea { min-height: 140px; resize: vertical; }
 
+.contact-form-status {
+  margin-bottom: 18px;
+  padding: 12px 14px;
+  border-radius: 8px;
+  background: rgba(232, 25, 44, 0.12);
+  border: 1px solid var(--ruby-bright);
+  color: var(--cream);
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
 .contact-info { padding: 20px 0; }
 
 .contact-info h3 { margin-bottom: 20px; }
@@ -945,10 +956,14 @@ footer {
   <div class="contact-grid">
     <div>
       <h2 style="margin-bottom:25px;">Send Us a Message</h2>
-      <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/contact/success.html">
-        <input type="hidden" name="form-name" value="contact">
-        <p class="hidden" style="display:none;">
-          <label>Don't fill this out: <input name="bot-field"></label>
+      <p id="contact-form-status" class="contact-form-status" role="alert" aria-live="polite" hidden></p>
+      <form name="contact" method="POST" action="https://formspree.io/f/mpqoapzb" accept-charset="UTF-8">
+        <!-- _next set by script so preview (e.g. *.workers.dev) and production both redirect correctly -->
+        <input type="hidden" name="_next" id="contact-form-next" value="https://redrubycleaningco.co.uk/contact/success.html">
+        <input type="hidden" name="_subject" value="New enquiry — Red Ruby Cleaning Co.">
+        <p class="hidden" aria-hidden="true" style="position:absolute;left:-9999px;">
+          <label for="website">Leave this empty</label>
+          <input type="text" id="website" name="_gotcha" tabindex="-1" autocomplete="off">
         </p>
         <div class="form-group">
           <label for="name">Your Name</label>
@@ -1128,6 +1143,104 @@ footer {
   </div>
 </footer>
 <div class="union-jack-strip"></div>
+
+<script>
+(function () {
+  var form = document.querySelector('form[name="contact"]');
+  if (!form) return;
+
+  var nextInput = document.getElementById("contact-form-next");
+  var statusEl = document.getElementById("contact-form-status");
+
+  function setSuccessRedirect() {
+    if (nextInput) {
+      nextInput.value = window.location.origin + "/contact/success.html";
+    }
+  }
+
+  setSuccessRedirect();
+
+  function showError(message) {
+    if (!statusEl) return;
+    statusEl.textContent = message;
+    statusEl.hidden = false;
+  }
+
+  function hideError() {
+    if (!statusEl) return;
+    statusEl.textContent = "";
+    statusEl.hidden = true;
+  }
+
+  form.addEventListener("submit", function (e) {
+    if (typeof fetch !== "function") {
+      setSuccessRedirect();
+      return;
+    }
+    e.preventDefault();
+    setSuccessRedirect();
+    hideError();
+
+    var submitBtn = form.querySelector('button[type="submit"]');
+    var originalText = submitBtn ? submitBtn.textContent : "";
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Sending…";
+    }
+
+    var fd = new FormData(form);
+    fetch(form.action, {
+      method: "POST",
+      body: fd,
+      headers: { Accept: "application/json" },
+    })
+      .then(function (res) {
+        return res.text().then(function (text) {
+          var data = {};
+          if (text) {
+            try {
+              data = JSON.parse(text);
+            } catch (e) {
+              data = {};
+            }
+          }
+          return { res: res, data: data };
+        });
+      })
+      .then(function (_ref) {
+        var res = _ref.res;
+        var data = _ref.data;
+        if (res.ok) {
+          window.location.href = window.location.origin + "/contact/success.html";
+          return;
+        }
+        var msg =
+          (data && data.error) ||
+          (data && data.errors && data.errors.map && data.errors.map(function (err) {
+            return err.message || String(err);
+          }).join(" ")) ||
+          "";
+        if (!msg && res.status === 403) {
+          msg =
+            "Form blocked: add this site’s domain in Formspree (Form settings → Restrict to domain), or turn that restriction off.";
+        }
+        if (!msg) {
+          msg = "Could not send your message. Please try again or email us directly.";
+        }
+        showError(typeof msg === "string" ? msg : String(msg));
+      })
+      .catch(function () {
+        showError("Network error. Check your connection and try again.");
+      })
+      .finally(function () {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalText;
+        }
+      });
+  });
+})();
+</script>
 
 </body>
 </html>
