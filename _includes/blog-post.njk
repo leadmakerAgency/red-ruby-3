@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="/styles.css">
   <link rel="icon" type="image/png" href="/logo.png">
 </head>
-<body>
+<body class="blog-post-page">
 <div class="union-jack-strip"></div>
 <div class="top-bar">
   <span>🇬🇧 Proudly British Owned & Operated</span>
@@ -58,20 +58,55 @@
 </header>
 
 <section class="service-hero">
-  <h1>{{ title }}</h1>
-  <p style="font-family:'Playfair Display',serif;font-style:italic;color:var(--grey);font-size:1.1rem;margin-top:10px;">
-    {{ excerpt | default("Practical cleaning and hosting advice from Cambridge's favourite cleaners.") }}
-  </p>
-  <p class="blog-date" style="margin-top:10px;">
-    {{ date | postDate }}
-  </p>
+  <div class="blog-post-hero-content">
+    <h1>{{ title }}</h1>
+    <p style="font-family:'Playfair Display',serif;font-style:italic;color:var(--grey);font-size:1.1rem;margin-top:10px;">
+      {{ excerpt | default("Practical cleaning and hosting advice from Cambridge's favourite cleaners.") }}
+    </p>
+    <p class="blog-date" style="margin-top:10px;">
+      {{ date | postDate }}
+    </p>
+  </div>
 </section>
 
 <section class="service-body">
+  {% if featured_image %}
+  <figure class="blog-post-featured-image">
+    <img src="{{ featured_image }}" alt="{{ title }}">
+  </figure>
+  {% endif %}
   {{ content | safe }}
 </section>
 
 <section class="section">
+  <div class="section-heading">
+    <h2>Related Posts</h2>
+    <div class="line"></div>
+  </div>
+  <div class="blog-grid">
+    {% set relatedCount = 0 %}
+    {% for post in collections.posts %}
+    {% if post.url != page.url and relatedCount < 3 %}
+    <div class="blog-card fade-in">
+      <div class="blog-thumb">
+        {% if post.data.featured_image %}
+        <img src="{{ post.data.featured_image }}" alt="{{ post.data.title }}" class="blog-thumb-image">
+        {% else %}
+        {{ post.data.hero_emoji or "🧼" }}
+        {% endif %}
+      </div>
+      <div class="blog-card-body">
+        <div class="blog-date">{{ post.date | postDate }}</div>
+        <h3>{{ post.data.title }}</h3>
+        <p>{{ post.data.excerpt }}</p>
+        <a href="{{ post.url }}" class="card-link">Read More →</a>
+      </div>
+    </div>
+    {% set relatedCount = relatedCount + 1 %}
+    {% endif %}
+    {% endfor %}
+  </div>
+
   <div style="text-align:center;">
     <a href="/blog/" class="btn btn-outline">← Back to all articles</a>
   </div>
