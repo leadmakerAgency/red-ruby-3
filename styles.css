@@ -764,6 +764,8 @@ nav ul li > a.active {
 }
 
 .blog-card-full-link .card-link {
+  display: inline-block;
+  margin-top: 8px;
   font-family: 'Bebas Neue', sans-serif;
   letter-spacing: 0.1em;
   font-size: 0.9rem;

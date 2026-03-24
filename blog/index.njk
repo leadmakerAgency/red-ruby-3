@@ -90,7 +90,6 @@ permalink: "{% if pagination.pageNumber == 0 %}/blog/{% else %}/blog/page/{{ pag
         <div class="blog-card-body">
           <div class="blog-date">{{ post.date | postDate }}</div>
           <h3 id="blog-card-title-{{ pagination.pageNumber }}-{{ loop.index }}">{{ post.data.title }}</h3>
-          <p>{{ post.data.excerpt }}</p>
           <span class="card-link">Read More →</span>
         </div>
       </a>
