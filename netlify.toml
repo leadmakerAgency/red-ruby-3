@@ -12,4 +12,4 @@
     X-XSS-Protection = "1; mode=block"
     X-Content-Type-Options = "nosniff"
 
-# Contact form: Formspree — in the Formspree dashboard add every public host (e.g. redrubycleaningco.co.uk and *.workers.dev / Pages previews) under form settings if “Restrict to domain” is enabled, or emails will not be sent.
+# Contact form: Formspree — in the Formspree dashboard add every public host (e.g. redrubycambridge.co.uk and *.workers.dev / Pages previews) under form settings if “Restrict to domain” is enabled, or emails will not be sent.

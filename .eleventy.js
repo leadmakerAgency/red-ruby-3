@@ -1,7 +1,8 @@
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("logo.png");
   eleventyConfig.addPassthroughCopy("hero.png");
-  eleventyConfig.addPassthroughCopy("llm.txt");
+  eleventyConfig.addPassthroughCopy("robots.txt");
+  eleventyConfig.addPassthroughCopy("llms.txt");
   eleventyConfig.addPassthroughCopy("styles.css");
   eleventyConfig.addPassthroughCopy({ "content/media": "media" });
 
@@ -9,6 +10,31 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("contact");
   eleventyConfig.addPassthroughCopy("services");
   eleventyConfig.addPassthroughCopy("admin");
+
+  eleventyConfig.addFilter("rangeFromOne", (end) => {
+    const n = Math.max(1, Math.floor(Number(end)));
+    return Array.from({ length: n }, (_, i) => i + 1);
+  });
+
+  eleventyConfig.addFilter("blogPageCount", (postCount, pageSize) => {
+    const count = Number(postCount);
+    const size = Number(pageSize) || 15;
+    return Math.max(1, Math.ceil(count / size));
+  });
+
+  eleventyConfig.addFilter("atomDate", (value) => {
+    if (!value) return new Date(0).toISOString();
+    const date = value instanceof Date ? value : new Date(value);
+    if (Number.isNaN(date.getTime())) return new Date(0).toISOString();
+    return date.toISOString();
+  });
+
+  eleventyConfig.addFilter("isoDate", (value) => {
+    if (!value) return "";
+    const date = value instanceof Date ? value : new Date(value);
+    if (Number.isNaN(date.getTime())) return "";
+    return date.toISOString().slice(0, 10);
+  });
 
   eleventyConfig.addFilter("postDate", (value) => {
     if (!value) return "";

@@ -961,7 +961,7 @@ footer {
       <p id="contact-form-status" class="contact-form-status" role="alert" aria-live="polite" hidden></p>
       <form name="contact" method="POST" action="https://formspree.io/f/mpqoapzb" accept-charset="UTF-8">
         <!-- _next set by script so preview (e.g. *.workers.dev) and production both redirect correctly -->
-        <input type="hidden" name="_next" id="contact-form-next" value="https://redrubycleaningco.co.uk/contact/success.html">
+        <input type="hidden" name="_next" id="contact-form-next" value="https://redrubycambridge.co.uk/contact/success/">
         <input type="hidden" name="_subject" value="New enquiry — Red Ruby Cleaning Co.">
         <p class="hidden" aria-hidden="true" style="position:absolute;left:-9999px;">
           <label for="website">Leave this empty</label>
@@ -1141,7 +1141,7 @@ footer {
   </div>
   <div class="footer-bottom">
     <p>&copy; 2025 Red Ruby Cleaning Co. Ltd · Company No. 14823671 · Registered in England & Wales · Cambridge, UK</p>
-    <p style="margin-top:5px;">Proudly British. Properly insured. Spotlessly Cambridge. · <a href="../llm.txt">llm.txt</a></p>
+    <p style="margin-top:5px;">Proudly British. Properly insured. Spotlessly Cambridge. · <a href="../llms.txt">llms.txt</a></p>
   </div>
 </footer>
 <div class="union-jack-strip"></div>
@@ -1156,7 +1156,7 @@ footer {
 
   function setSuccessRedirect() {
     if (nextInput) {
-      nextInput.value = window.location.origin + "/contact/success.html";
+      nextInput.value = window.location.origin + "/contact/success/";
     }
   }
 
@@ -1213,7 +1213,7 @@ footer {
         var res = _ref.res;
         var data = _ref.data;
         if (res.ok) {
-          window.location.href = window.location.origin + "/contact/success.html";
+          window.location.href = window.location.origin + "/contact/success/";
           return;
         }
         var msg =

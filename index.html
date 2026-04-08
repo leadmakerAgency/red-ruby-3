@@ -7,7 +7,45 @@
   <title>Red Ruby Cleaning Co. — Cambridge's Premier Airbnb & Short Let Cleaning Service</title>
   <meta name="description" content="Cambridge's trusted Airbnb cleaning service. British owned & operated. Fully insured, uniformed, professional cleaners for short-term lets, holiday rentals & vacation properties across Cambridge, UK.">
   <meta name="keywords" content="Airbnb cleaning Cambridge, short let cleaning Cambridge, vacation rental cleaning Cambridge, holiday let cleaning, turnover cleaning Cambridge, professional cleaners Cambridge">
-  <link rel="canonical" href="https://redrubycleaningco.co.uk/">
+  <link rel="canonical" href="{{ site.url }}/">
+  <link rel="alternate" type="application/atom+xml" title="Red Ruby Cleaning Co. — Blog" href="{{ site.url }}/feed.xml">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "{{ site.url }}/#organization",
+        "name": "Red Ruby Cleaning Co. Ltd",
+        "url": "{{ site.url }}/",
+        "logo": "{{ site.url }}/logo.png",
+        "email": "mark.j.blackwell@gmail.com",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Cambridge",
+          "addressCountry": "GB"
+        }
+      },
+      {
+        "@type": "LocalBusiness",
+        "@id": "{{ site.url }}/#localbusiness",
+        "name": "Red Ruby Cleaning Co. Ltd",
+        "image": "{{ site.url }}/logo.png",
+        "url": "{{ site.url }}/",
+        "email": "mark.j.blackwell@gmail.com",
+        "priceRange": "$$",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Cambridge",
+          "addressRegion": "England",
+          "addressCountry": "GB"
+        },
+        "areaServed": { "@type": "City", "name": "Cambridge" },
+        "parentOrganization": { "@id": "{{ site.url }}/#organization" }
+      }
+    ]
+  }
+  </script>
   <style>
 /* ============================================
    RED RUBY CLEANING CO. — Cambridge, UK
@@ -1243,7 +1281,7 @@ footer {
   </div>
   <div class="footer-bottom">
     <p>&copy; 2025 Red Ruby Cleaning Co. Ltd · Company No. 14823671 · Registered in England & Wales · Cambridge, UK</p>
-    <p style="margin-top:5px;">Proudly British. Properly insured. Spotlessly Cambridge. · <a href="llm.txt">llm.txt</a></p>
+    <p style="margin-top:5px;">Proudly British. Properly insured. Spotlessly Cambridge. · <a href="llms.txt">llms.txt</a></p>
   </div>
 </footer>
 
