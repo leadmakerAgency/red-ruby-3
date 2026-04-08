@@ -5,13 +5,16 @@
   "main": "index.js",
   "scripts": {
     "build": "node ./node_modules/@11ty/eleventy/cmd.cjs",
-    "dev": "node ./node_modules/@11ty/eleventy/cmd.cjs --serve"
+    "dev": "node ./node_modules/@11ty/eleventy/cmd.cjs --serve",
+    "deploy": "npm run build && wrangler deploy",
+    "preview": "npm run build && wrangler dev"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
-    "@11ty/eleventy": "^3.1.2"
+    "@11ty/eleventy": "^3.1.2",
+    "wrangler": "^4.81.0"
   }
 }
