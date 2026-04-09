@@ -1,6 +1,17 @@
-# Build with Eleventy and deploy static output to GitHub Pages.
-# In repo Settings → Pages, set Source to "GitHub Actions" (not "Deploy from a branch").
-name: Deploy site to Pages
+# Eleventy (11ty) → static HTML only. This repo is NOT Jekyll; GitHub must never
+# run Jekyll on the Eleventy source on branch "main".
+#
+# REQUIRED one-time setup (Repository → Settings → Pages → Build and deployment):
+#   • Source: Deploy from a branch
+#   • Branch: gh-pages  ← NOT main
+#   • Folder: / (root)
+#
+# If the publishing branch is "main", GitHub runs "pages build and deployment"
+# with Jekyll on .md / .njk source and the build fails (Liquid vs Nunjucks).
+# This workflow pushes only the contents of ./_site (HTML, assets) to gh-pages
+# and the action adds .nojekyll so Pages serves files as static assets.
+#
+name: Build and deploy (Eleventy → gh-pages)
 
 on:
   push:
@@ -8,16 +19,14 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 concurrency:
-  group: pages
-  cancel-in-progress: false
+  group: pages-gh-pages
+  cancel-in-progress: true
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -32,21 +41,15 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build
+      - name: Build site
         run: npm run build
 
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v4
-        with:
-          path: _site
+      - name: Verify build output
+        run: test -f _site/index.html
 
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Publish to gh-pages branch
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_site
+          force_orphan: true
