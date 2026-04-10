@@ -6,10 +6,8 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("styles.css");
   eleventyConfig.addPassthroughCopy({ "content/media": "media" });
 
-  eleventyConfig.addPassthroughCopy("about");
-  eleventyConfig.addPassthroughCopy("contact");
-  eleventyConfig.addPassthroughCopy("services");
-  eleventyConfig.addPassthroughCopy("admin");
+  // HTML under these paths uses Nunjucks; folder passthrough would ship raw source.
+  eleventyConfig.addPassthroughCopy("admin/config.yml");
 
   eleventyConfig.addFilter("rangeFromOne", (end) => {
     const n = Math.max(1, Math.floor(Number(end)));
