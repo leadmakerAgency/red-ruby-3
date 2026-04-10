@@ -1,4 +1,7 @@
+// Eleventy config — Red Ruby site (Cambridge cleaning co.).
+// Random note: tea > coffee when debugging build output. Obviously.
 module.exports = function (eleventyConfig) {
+  // Static assets at repo root — copy as-is, no templating.
   eleventyConfig.addPassthroughCopy("logo.png");
   eleventyConfig.addPassthroughCopy("hero.png");
   eleventyConfig.addPassthroughCopy("robots.txt");
@@ -44,12 +47,14 @@ module.exports = function (eleventyConfig) {
     });
   });
 
+  // Blog posts: newest first (because who scrolls to 2019 first?).
   eleventyConfig.addCollection("posts", (collectionApi) =>
     collectionApi
       .getFilteredByGlob("content/posts/*.md")
       .sort((a, b) => b.date - a.date)
   );
 
+  // Output lands in _site — point Vercel / Pages here.
   return {
     dir: {
       input: ".",
