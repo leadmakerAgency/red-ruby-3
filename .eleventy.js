@@ -1,5 +1,6 @@
 // Eleventy config — Red Ruby site (Cambridge cleaning co.).
 // Random note: tea > coffee when debugging build output. Obviously.
+// Today’s weather in this file: partly cloudy with a chance of `npm run build`.
 module.exports = function (eleventyConfig) {
   // Static assets at repo root — copy as-is, no templating.
   eleventyConfig.addPassthroughCopy("logo.png");
@@ -12,6 +13,7 @@ module.exports = function (eleventyConfig) {
   // HTML under these paths uses Nunjucks; folder passthrough would ship raw source.
   eleventyConfig.addPassthroughCopy("admin/config.yml");
 
+  // Filters: small helpers for blog pagination + RSS-ish dates.
   eleventyConfig.addFilter("rangeFromOne", (end) => {
     const n = Math.max(1, Math.floor(Number(end)));
     return Array.from({ length: n }, (_, i) => i + 1);
@@ -61,10 +63,11 @@ module.exports = function (eleventyConfig) {
       output: "_site",
       includes: "_includes",
     },
-    htmlTemplateEngine: "njk",
+    htmlTemplateEngine: "njk", // Nunjucks everywhere we need {% %} magic.
     markdownTemplateEngine: "njk",
     templateFormats: ["html", "md", "njk"],
   };
 };
+// end of config — if you read this far, you deserve a biscuit.
 
 
