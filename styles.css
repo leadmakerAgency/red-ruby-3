@@ -838,6 +838,49 @@ nav ul li > a.active {
   display: block;
 }
 
+/* Markdown body: keep embedded media inside the same column as paragraphs */
+.blog-post-page .service-body img,
+.blog-post-page .service-body video,
+.blog-post-page .service-body iframe,
+.blog-post-page .service-body svg {
+  max-width: 100%;
+  height: auto;
+}
+
+.blog-post-page .service-body figure {
+  margin: 1.25rem 0;
+  max-width: 100%;
+}
+
+.blog-post-page .service-body figure img {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.blog-post-page .service-body picture {
+  display: block;
+  max-width: 100%;
+}
+
+.blog-post-page .service-body table {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+/* Featured hero stays full column width + fixed crop (above rules also match this img) */
+.blog-post-page .service-body .blog-post-featured-image img {
+  width: 100%;
+  max-width: 100%;
+  max-height: 460px;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+
 .blog-post-page .service-body h2 {
   margin: 34px 0 14px;
   font-size: clamp(1.7rem, 3vw, 2.45rem);

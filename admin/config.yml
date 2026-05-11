@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=https://unpkg.com/@sveltia/cms@0.160.0/schema/sveltia-cms.json
 backend:
   name: github
   # TODO: replace with your actual GitHub repo, e.g. "your-username/red-ruby"
@@ -28,6 +29,12 @@ collections:
       - { label: "Featured Image", name: "featured_image", widget: "image", required: false, hint: "Optional thumbnail image shown on the blog list." }
       - { label: "Hero Emoji", name: "hero_emoji", widget: "string", required: false, hint: "Optional emoji used in the blog card thumbnail." }
       - { label: "Tags", name: "tags", widget: "list", required: false }
-      - { label: "Body", name: "body", widget: "markdown" }
+      - label: "Body"
+        name: "body"
+        widget: "markdown"
+        hint: "Paste images with Ctrl+V or use the toolbar image control; wait until the upload finishes (file appears under Media) before saving so the image is written to the repo."
+        editor_components:
+          - code-block
+          - image
 
 
