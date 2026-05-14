@@ -82,7 +82,7 @@ A one-bedroom flat typically ranges from £60 to £90 for a standard turnover wi
 
 Linen pricing is often itemized per set. A double or king sheet set plus two towels might cost £12 to £18 per guest set, collected and returned. Hand towels, bath mats, and tea towels add a few pounds. If your property requires premium cotton or branded items, factor in higher replacement rates.
 
-Location influences cost. City-centre jobs with restricted parking, lifts that are often out of service, or long walks to the flat can add time. Properties in Newnham or Chesterton with easier parking sometimes sit at the lower end of the range. Expect VAT on top if you work with a registered company.
+Location influences cost. City-centre jobs with restricted parking, lifts that are often out of service, or long walks to the flat can add time. Properties in Newnham or Chesterton with easier parking sometimes sit at the lower end of the range. Expect VAT on top if your cleaner or supplier is VAT-registered.
 
 ## Scheduling and systems for smooth turnovers
 

@@ -11,7 +11,7 @@ eleventyExcludeFromCollections: true
   <id>{{ site.url }}/blog/</id>
   <updated>{% if collections.posts.length %}{{ collections.posts[0].date | atomDate }}{% else %}{{ site.buildDate }}T00:00:00.000Z{% endif %}</updated>
   <author>
-    <name>Red Ruby Cleaning Co. Ltd</name>
+    <name>Red Ruby Cleaning Co.</name>
     <email>mark.j.blackwell@gmail.com</email>
   </author>
 {%- for post in collections.posts %}
