@@ -24,7 +24,18 @@ collections:
         pattern:
           - "^[a-z0-9-]+$"
           - "Use only lowercase letters, numbers, and dashes."
-      - { label: "Publish Date", name: "date", widget: "datetime", time_format: "HH:mm", format: "YYYY-MM-DDTHH:mm:ssZ" }
+      - label: "Publish Date"
+        name: "date"
+        widget: "datetime"
+        time_format: "HH:mm"
+        format: "YYYY-MM-DDTHH:mm:ssZ"
+        picker_utc: true
+      - label: "Draft"
+        name: "draft"
+        widget: "boolean"
+        default: false
+        required: false
+        hint: "If enabled, the post stays hidden in production until draft is turned off."
       - { label: "Excerpt", name: "excerpt", widget: "text", hint: "Short summary shown on the blog list and in SEO." }
       - { label: "Featured Image", name: "featured_image", widget: "image", required: false, hint: "Optional thumbnail image shown on the blog list." }
       - { label: "Hero Emoji", name: "hero_emoji", widget: "string", required: false, hint: "Optional emoji used in the blog card thumbnail." }

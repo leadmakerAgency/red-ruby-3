@@ -1,6 +1,6 @@
+const { shouldHideInProduction } = require("./lib/post-visibility");
+
 // Eleventy config — Red Ruby site (Cambridge cleaning co.).
-// Random note: tea > coffee when debugging build output. Obviously.
-// Today’s weather in this file: partly cloudy with a chance of `npm run build`.
 module.exports = function (eleventyConfig) {
   // Static assets at repo root — copy as-is, no templating.
   eleventyConfig.addPassthroughCopy("logo.png");
@@ -49,10 +49,16 @@ module.exports = function (eleventyConfig) {
     });
   });
 
-  // Blog posts: newest first (because who scrolls to 2019 first?).
+  // Blog posts: newest first, excluding unpublished future/draft posts in production.
   eleventyConfig.addCollection("posts", (collectionApi) =>
     collectionApi
       .getFilteredByGlob("content/posts/*.md")
+      .filter((post) =>
+        !shouldHideInProduction({
+          date: post.date,
+          draft: post.data?.draft,
+        })
+      )
       .sort((a, b) => b.date - a.date)
   );
 
@@ -68,6 +74,4 @@ module.exports = function (eleventyConfig) {
     templateFormats: ["html", "md", "njk"],
   };
 };
-// end of config — if you read this far, you deserve a biscuit.
-
-
+// end of config
