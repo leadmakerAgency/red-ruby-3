@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "prebuild": "node scripts/find-duplicate-slugs.js --check",
     "build": "node ./node_modules/@11ty/eleventy/cmd.cjs",
     "dev": "node ./node_modules/@11ty/eleventy/cmd.cjs --serve"
   },
