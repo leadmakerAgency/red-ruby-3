@@ -1,7 +1,28 @@
+const path = require("path");
 const { shouldHideInProduction } = require("./lib/post-visibility");
+const { isSupersededDuplicate, prepareN8nPosts } = require("./lib/n8n-posts");
+
+const postsDir = path.join(__dirname, "content", "posts");
+const duplicateGroups = prepareN8nPosts(postsDir);
+
+if (duplicateGroups.length > 0) {
+  console.log(
+    `[n8n] Resolved ${duplicateGroups.length} duplicate slug group(s); keeping the newest post for each slug.`
+  );
+}
 
 // Eleventy config — Red Ruby site (Cambridge cleaning co.).
 module.exports = function (eleventyConfig) {
+  for (const group of duplicateGroups) {
+    for (let index = 1; index < group.posts.length; index += 1) {
+      const relativePath = path
+        .relative(__dirname, group.posts[index].inputPath)
+        .split(path.sep)
+        .join("/");
+      eleventyConfig.ignores.add(`./${relativePath}`);
+    }
+  }
+
   // Static assets at repo root — copy as-is, no templating.
   eleventyConfig.addPassthroughCopy("logo.png");
   eleventyConfig.addPassthroughCopy("hero.png");
@@ -53,11 +74,13 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addCollection("posts", (collectionApi) =>
     collectionApi
       .getFilteredByGlob("content/posts/*.md")
-      .filter((post) =>
-        !shouldHideInProduction({
-          date: post.date,
-          draft: post.data?.draft,
-        })
+      .filter(
+        (post) =>
+          !isSupersededDuplicate(post.inputPath) &&
+          !shouldHideInProduction({
+            date: post.date,
+            draft: post.data?.draft,
+          })
       )
       .sort((a, b) => b.date - a.date)
   );
