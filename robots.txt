@@ -1,0 +1,220 @@
+# robots.txt for redrubycambridge.co.uk
+# Allow everything - search engines, AI bots, all crawlers - no restrictions
+
+User-agent: *
+Allow: /
+
+# -----------------------------------------------
+# SITEMAP (for search engines)
+# -----------------------------------------------
+Sitemap: https://redrubycambridge.co.uk/sitemap.xml
+
+# -----------------------------------------------
+# LLMs.TXT (for AI language models)
+# A structured summary of this website designed
+# specifically for AI assistants and LLMs.
+# See: https://llmstxt.org
+# -----------------------------------------------
+# LLMs-txt: https://redrubycambridge.co.uk/llms.txt
+
+# -----------------------------------------------
+# GOOGLE
+# -----------------------------------------------
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Googlebot-Video
+Allow: /
+
+User-agent: Googlebot-News
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: AdsBot-Google
+Allow: /
+
+User-agent: Storebot-Google
+Allow: /
+
+# -----------------------------------------------
+# BING / MICROSOFT
+# -----------------------------------------------
+User-agent: Bingbot
+Allow: /
+
+User-agent: MSNBot
+Allow: /
+
+User-agent: AdIdxBot
+Allow: /
+
+# -----------------------------------------------
+# APPLE
+# -----------------------------------------------
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# -----------------------------------------------
+# ANTHROPIC (Claude)
+# -----------------------------------------------
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+# -----------------------------------------------
+# OPENAI (ChatGPT)
+# -----------------------------------------------
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+# -----------------------------------------------
+# xAI (Grok)
+# -----------------------------------------------
+User-agent: Grok
+Allow: /
+
+User-agent: xAI
+Allow: /
+
+# -----------------------------------------------
+# DEEPSEEK
+# -----------------------------------------------
+User-agent: DeepSeek
+Allow: /
+
+User-agent: DeepSeekBot
+Allow: /
+
+# -----------------------------------------------
+# META (Facebook / Instagram AI)
+# -----------------------------------------------
+User-agent: meta-externalagent
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+User-agent: meta-externalfetcher
+Allow: /
+
+# -----------------------------------------------
+# AMAZON (Alexa / AWS AI)
+# -----------------------------------------------
+User-agent: Amazonbot
+Allow: /
+
+# -----------------------------------------------
+# BYTEDANCE / TIKTOK
+# -----------------------------------------------
+User-agent: Bytespider
+Allow: /
+
+# -----------------------------------------------
+# PERPLEXITY AI
+# -----------------------------------------------
+User-agent: PerplexityBot
+Allow: /
+
+# -----------------------------------------------
+# YOU.COM
+# -----------------------------------------------
+User-agent: YouBot
+Allow: /
+
+# -----------------------------------------------
+# COHERE
+# -----------------------------------------------
+User-agent: cohere-ai
+Allow: /
+
+# -----------------------------------------------
+# MISTRAL AI
+# -----------------------------------------------
+User-agent: MistralBot
+Allow: /
+
+# -----------------------------------------------
+# COMMON CRAWL (used for AI research datasets)
+# -----------------------------------------------
+User-agent: CCBot
+Allow: /
+
+# -----------------------------------------------
+# DUCKDUCKGO
+# -----------------------------------------------
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: DuckDuckGo-Favicons-Bot
+Allow: /
+
+# -----------------------------------------------
+# YAHOO
+# -----------------------------------------------
+User-agent: Slurp
+Allow: /
+
+# -----------------------------------------------
+# YANDEX
+# -----------------------------------------------
+User-agent: YandexBot
+Allow: /
+
+User-agent: YandexImages
+Allow: /
+
+# -----------------------------------------------
+# BAIDU
+# -----------------------------------------------
+User-agent: Baiduspider
+Allow: /
+
+# -----------------------------------------------
+# NAVER (South Korea)
+# -----------------------------------------------
+User-agent: Yeti
+Allow: /
+
+# -----------------------------------------------
+# SOGOU (China)
+# -----------------------------------------------
+User-agent: Sogou
+Allow: /
+
+# -----------------------------------------------
+# SEMRUSH / AHREFS / SEO TOOLS
+# (helps with SEO audits and visibility)
+# -----------------------------------------------
+User-agent: SemrushBot
+Allow: /
+
+User-agent: AhrefsBot
+Allow: /
+
+User-agent: MJ12bot
+Allow: /
