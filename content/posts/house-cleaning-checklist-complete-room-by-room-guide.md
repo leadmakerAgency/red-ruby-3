@@ -3,7 +3,7 @@ layout: "blog-post.njk"
 title: "House Cleaning Checklist: Complete Room-by-Room Guide"
 slug: "house-cleaning-checklist-complete-room-by-room-guide"
 date: "2026-06-16T14:02:22.873Z"
-excerpt: "Hook: You open a closet and immediately lose ten minutes hunting for a lost shoe, then find dust on the bookshelf you promised to clean last week. Cleaning feels like a chore that keeps growing, until you have a list so long you do nothing"
+excerpt: "You open a closet and immediately lose ten minutes hunting for a lost shoe, then find dust on the bookshelf you promised to clean last week. Cleaning feels like a chore that keeps growing, until you have a list so long you do nothing"
 featured_image: "/media/image-house-cleaning-checklist-complete-room-by-room-guide.png"
 hero_emoji: ""
 tags:
@@ -12,9 +12,8 @@ tags:
 permalink: "/blog/house-cleaning-checklist-complete-room-by-room-guide/"
 ---
 
-Hook: You open a closet and immediately lose ten minutes hunting for a lost shoe, then find dust on the bookshelf you promised to clean last week. Cleaning feels like a chore that keeps growing, until you have a list so long you do nothing at all. A simple, realistic house cleaning checklist changes that pattern by turning vague intentions into clear, manageable actions.
+You open a closet and immediately lose ten minutes hunting for a lost shoe, then find dust on the bookshelf you promised to clean last week. Cleaning feels like a chore that keeps growing, until you have a list so long you do nothing at all. A simple, realistic house cleaning checklist changes that pattern by turning vague intentions into clear, manageable actions.
 
-Introduction
 A room-by-room house cleaning checklist does more than tidy surfaces. It reduces decision fatigue, cuts the time you spend cleaning each week, and makes deep cleaning less intimidating. This article offers a practical checklist for each major room, explains the order that makes cleaning faster, suggests time estimates and schedules, and gives tips to handle stubborn problems like pet hair, odors, and hard water stains. Read it once to learn the method, then use the checklists as a repeatable routine.
 
 How to use this house cleaning checklist

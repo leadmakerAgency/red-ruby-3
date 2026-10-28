@@ -3,7 +3,7 @@ layout: "blog-post.njk"
 title: "End of tenancy cleaning checklist to get your deposit back"
 slug: "end-of-tenancy-cleaning-checklist-to-get-your-deposit-back"
 date: "2026-06-06T14:02:23.919Z"
-excerpt: "Hook You can scrub and mop until your arms ache, but if you miss the oven door seal or forget to clear the garden, your landlord may still keep part of your deposit. A focused end of tenancy cleaning approach turns last-minute panic into a"
+excerpt: "You can scrub and mop until your arms ache, but if you miss the oven door seal or forget to clear the garden, your landlord may still keep part of your deposit. A focused end of tenancy cleaning approach turns last-minute panic into a"
 featured_image: "/media/image-end-of-tenancy-cleaning-checklist-to-get-your-deposit-back.png"
 hero_emoji: ""
 tags:
@@ -12,11 +12,7 @@ tags:
 permalink: "/blog/end-of-tenancy-cleaning-checklist-to-get-your-deposit-back/"
 ---
 
-Hook
-
 You can scrub and mop until your arms ache, but if you miss the oven door seal or forget to clear the garden, your landlord may still keep part of your deposit. A focused end of tenancy cleaning approach turns last-minute panic into a predictable, refund-friendly result.
-
-Introduction
 
 End of tenancy cleaning is the single task most likely to decide whether you get your full deposit back. Landlords expect the property returned in the same condition as at the start, except for reasonable wear and tear. That expectation translates into a long list of specific cleaning jobs that many tenants overlook under stress. This article gives a practical, room-by-room checklist, timing guidance, product and technique tips, and advice on how to document the property so you leave with minimal dispute and the highest chance of a full refund.
 

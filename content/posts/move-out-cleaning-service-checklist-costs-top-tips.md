@@ -14,8 +14,6 @@ permalink: "/blog/move-out-cleaning-service-checklist-costs-top-tips/"
 
 Most tenants lose part of their security deposit over something as small as a greasy oven or scuffed baseboards. A reliable move out cleaning service can turn a stressful, last-minute sprint into a smooth handover that protects your deposit and frees your time for the next chapter.
 
-Introduction
-
 Moving is messy and expensive. Packing, logistics, and emotional farewells compete for your attention while the landlord expects a spotless unit at the final inspection. Hiring a professional move out cleaning service removes a major burden and increases the odds of a full deposit return. This article explains exactly what these services do, how much they cost, how to choose the right provider, and concrete tips you can use right away to avoid common mistakes.
 
 Why a move out cleaning matters
